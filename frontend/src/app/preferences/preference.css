@@ -1,0 +1,22 @@
+.pref-container {
+    display: flex;
+    justify-content: center;
+    padding: 32px 16px;
+}
+
+.pref-card {
+    width: 100%;
+    max-width: 500px;
+    padding: 24px;
+}
+
+.full-width {
+    width: 100%;
+    margin-top: 16px;
+}
+
+.spinner-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 24px 0;
+}

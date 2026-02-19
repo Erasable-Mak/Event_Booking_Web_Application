@@ -1,0 +1,160 @@
+.calendar-container {
+    padding: 16px 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.calendar-header h2 {
+    margin: 0;
+    font-weight: 500;
+}
+
+.category-filter {
+    min-width: 200px;
+}
+
+.week-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    margin-bottom: 8px;
+}
+
+.week-label {
+    font-size: 16px;
+    font-weight: 500;
+    min-width: 200px;
+    text-align: center;
+}
+
+.week-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    min-height: 400px;
+}
+
+.day-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.day-header {
+    text-align: center;
+    padding: 10px 4px;
+    border-radius: 8px 8px 0 0;
+    background: #f5f5f5;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.day-header.today {
+    background: #e8eaf6;
+    border-bottom-color: #3f51b5;
+}
+
+.day-name {
+    display: block;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.day-date {
+    display: block;
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.day-slots {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 6px 0;
+}
+
+.slot-card {
+    padding: 10px !important;
+    border-left: 4px solid #e0e0e0;
+    transition: box-shadow 0.2s;
+}
+
+.slot-card.available {
+    border-left-color: #3f51b5;
+}
+
+.slot-card.my-booking {
+    border-left-color: #4caf50;
+    background: #e8f5e9;
+}
+
+.slot-card.booked {
+    border-left-color: #bdbdbd;
+    opacity: 0.75;
+}
+
+.slot-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.slot-time {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.slot-title {
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+.slot-category {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+    background: #e8eaf6;
+    color: #1a237e;
+}
+
+.slot-action {
+    margin-top: 8px;
+}
+
+.slot-action button {
+    width: 100%;
+    font-size: 12px;
+}
+
+.no-slots {
+    text-align: center;
+    padding: 16px 4px;
+    opacity: 0.5;
+    font-size: 13px;
+}
+
+.spinner-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 48px;
+}
+
+@media (max-width: 900px) {
+    .week-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .week-grid {
+        grid-template-columns: 1fr;
+    }
+}

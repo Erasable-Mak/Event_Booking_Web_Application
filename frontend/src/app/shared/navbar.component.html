@@ -1,0 +1,26 @@
+<mat-toolbar color="primary" class="navbar">
+    <mat-icon class="brand-icon">event</mat-icon>
+    <span class="brand">Event Booking</span>
+
+    <span class="spacer"></span>
+
+    @if (auth.isLoggedIn()) {
+    <a mat-button routerLink="/calendar" routerLinkActive="active-link">
+        <mat-icon>calendar_month</mat-icon> Calendar
+    </a>
+    <a mat-button routerLink="/preferences" routerLinkActive="active-link">
+        <mat-icon>tune</mat-icon> Preferences
+    </a>
+    @if (isAdmin()) {
+    <a mat-button routerLink="/admin" routerLinkActive="active-link">
+        <mat-icon>admin_panel_settings</mat-icon> Admin
+    </a>
+    }
+    <button mat-button (click)="logout()">
+        <mat-icon>logout</mat-icon> Logout
+    </button>
+    } @else {
+    <a mat-button routerLink="/login" routerLinkActive="active-link">Login</a>
+    <a mat-button routerLink="/register" routerLinkActive="active-link">Register</a>
+    }
+</mat-toolbar>

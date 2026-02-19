@@ -1,0 +1,70 @@
+<div class="calendar-container">
+    <!-- Header -->
+    <div class="calendar-header">
+        <h2>Event Calendar</h2>
+        <div class="header-controls">
+            <mat-form-field appearance="outline" class="category-filter">
+                <mat-label>Filter by Category</mat-label>
+                <mat-select [(ngModel)]="selectedCategory" (selectionChange)="loadSlots()">
+                    <mat-option [value]="0">All (My Preferences)</mat-option>
+                    @for (cat of categories; track cat.id) {
+                    <mat-option [value]="cat.id">{{ cat.name }}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <!-- Week Navigation -->
+    <div class="week-nav">
+        <button mat-icon-button (click)="prevWeek()" matTooltip="Previous Week">
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+        <span class="week-label">
+            {{ weekStart | date:'MMM d' }} – {{ weekEnd | date:'MMM d, yyyy' }}
+        </span>
+        <button mat-icon-button (click)="nextWeek()" matTooltip="Next Week">
+            <mat-icon>chevron_right</mat-icon>
+        </button>
+        <button mat-button (click)="goToday()">Today</button>
+    </div>
+
+    @if (loading) {
+    <div class="spinner-wrap"><mat-spinner diameter="48"></mat-spinner></div>
+    } @else {
+    <!-- Weekly Grid -->
+    <div class="week-grid">
+        @for (day of weekDays; track day.label) {
+        <div class="day-column">
+            <div class="day-header" [class.today]="isToday(day.date)">
+                <span class="day-name">{{ day.label }}</span>
+                <span class="day-date">{{ day.date | date:'MMM d' }}</span>
+            </div>
+            <div class="day-slots">
+                @for (slot of getSlotsForDay(day.date); track slot.id) {
+                <mat-card class="slot-card" [class.booked]="slot.booked_by !== null && slot.booked_by !== currentUserId"
+                    [class.my-booking]="slot.booked_by === currentUserId" [class.available]="slot.booked_by === null">
+                    <div class="slot-time">
+                        {{ slot.start_time | date:'h:mm a' }} – {{ slot.end_time | date:'h:mm a' }}
+                    </div>
+                    <div class="slot-title">{{ slot.title }}</div>
+                    <span class="slot-category">{{ slot.category_name }}</span>
+                    <div class="slot-action">
+                        @if (slot.booked_by === null) {
+                        <button mat-flat-button color="primary" (click)="book(slot)">Book</button>
+                        } @else if (slot.booked_by === currentUserId) {
+                        <button mat-stroked-button color="warn" (click)="unbook(slot)">Unsubscribe</button>
+                        } @else {
+                        <button mat-flat-button disabled>Booked</button>
+                        }
+                    </div>
+                </mat-card>
+                } @empty {
+                <div class="no-slots">No events</div>
+                }
+            </div>
+        </div>
+        }
+    </div>
+    }
+</div>
