@@ -6,12 +6,12 @@ A full-stack event booking application where users can browse, filter, and book 
 
 ## Tech Stack
 
-| Layer      | Technology                          |
-| ---------- | ----------------------------------- |
-| Frontend   | Angular 19, Angular Material 21     |
-| Backend    | Django 4.2, Django REST Framework   |
-| Auth       | JWT (SimpleJWT)                     |
-| Database   | SQLite (development)                |
+| Layer      | Technology                                                       |
+| ---------- | -----------------------------------------------------------------|
+| Frontend   | Angular 21.1.0, Angular Material 21.1.5, Angular CLI 21.1.4      |
+| Backend    | Django 4.2.28, Django REST Framework 3.16.1                      |
+| Auth       | JWT (SimpleJWT)                                                  |
+| Database   | SQLite (development)                                             |
 
 ---
 
@@ -53,8 +53,8 @@ event-booking-app/
 
 ### Prerequisites
 
-- Python 3.11.9+
-- Node.js 24.11.0+
+- Python 3.11.9
+- Node.js 24.11.0
 - Angular CLI (`npm install -g @angular/cli`)
 
 ### Backend
@@ -104,7 +104,7 @@ The application distinguishes between **Normal Users** and **Admins**.
 
 ### 1. Admin User
 Used for managing the system's available time slots.
-- **Login Credentials**: `admin` / `admin123` (Created via `seed_data`)
+- **Login Credentials**: username: `admin` / password: `admin123` (Created via `seed_data`)
 - **Capabilities**:
     - Access the **Admin Dashboard** to create new time slots.
     - View and manage all created slots in a list view.
@@ -124,12 +124,12 @@ Used for browsing and booking events.
 
 ### Authentication
 
-| Method | Endpoint                | Description         |
-| ------ | ----------------------- | ------------------- |
-| POST   | `/api/auth/register/`   | Register a new user |
-| POST   | `/api/auth/token/`      | Login (get JWT)     |
-| POST   | `/api/auth/token/refresh/` | Refresh JWT      |
-| GET    | `/api/auth/me/`         | Current user info   |
+| Method | Endpoint                   | Description         |
+| ------ | -------------------------- | ------------------- |
+| POST   | `/api/auth/register/`      | Register a new user |
+| POST   | `/api/auth/token/`         | Login (get JWT)     |
+| POST   | `/api/auth/token/refresh/` | Refresh JWT         |
+| GET    | `/api/auth/me/`            | Current user info   |
 
 ### Categories
 
