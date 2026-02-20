@@ -32,7 +32,7 @@ event-booking-app/
 │   ├── requirements.txt
 │   ├── db.sqlite3
 │   └── manage.py
-├── frontend/                # Angular 19 application
+├── frontend/                # Angular 21 application
 │   └── src/app/
 │       ├── app.routes.ts    # Main routing
 │       ├── app.config.ts    # App configuration (providers)
